@@ -2,6 +2,7 @@ package example;
 
 import arc.*;
 import arc.util.*;
+import content.KatorBlocks;
 import content.KatorItems;
 import mindustry.*;
 import mindustry.content.*;
@@ -19,11 +20,10 @@ public class ExampleJavaMod extends Mod{
         Events.on(ClientLoadEvent.class, e -> {
             //show dialog upon startup
             Time.runTask(10f, () -> {
-                BaseDialog dialog = new BaseDialog("frog");
+                BaseDialog dialog = new BaseDialog("You know the rules...");
                 dialog.cont.add("behold").row();
                 //mod sprites are prefixed with the mod name (this mod is called 'example-java-mod' in its config)
-                dialog.cont.image(Core.atlas.find("example-java-mod-frog")).pad(20f).row();
-                dialog.cont.button("I see", dialog::hide).size(100f, 50f);
+                dialog.cont.button("And so do i... SAY GOODBYE", dialog::hide).size(400f, 50f);
                 dialog.show();
             });
         });
@@ -32,11 +32,6 @@ public class ExampleJavaMod extends Mod{
     @Override
     public void loadContent(){
         KatorItems.load();
-        //KatorLiquids.load();
-        //KatorUnits.load();
-        //KatorBlocks.load();
-        //KatorLoadouts.load();
-        //KatorPlanets.load();
-        //KatorTechTree.load();
+        KatorBlocks.load();
     }
 }

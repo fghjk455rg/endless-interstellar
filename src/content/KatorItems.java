@@ -16,6 +16,7 @@ public class KatorItems {
         aluminum = new Item("aluminum",Color.valueOf("9ebda3")){{
             cost = 1f;
             hardness = 1;
+            alwaysUnlocked = true;
         }};
 
         KatorItems.addAll (
