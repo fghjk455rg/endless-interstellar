@@ -32,13 +32,11 @@ public class ExampleJavaMod extends Mod{
     @Override
     public void loadContent(){
         KatorItems.load();
-        /**
-        PerseaLiquids.load();
-        PerseaUnits.load();
-        PerseaBlocks.load();
-        PerseaLoadouts.load();
-        PerseaPlanets.load();
-        PerseaTechTree.load();
-        */
+        //KatorLiquids.load();
+        //KatorUnits.load();
+        //KatorBlocks.load();
+        //KatorLoadouts.load();
+        //KatorPlanets.load();
+        //KatorTechTree.load();
     }
 }

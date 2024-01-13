@@ -1,24 +1,19 @@
 package content;
 
-import arc.graphics.Color;
+import arc.graphics.*;
 import arc.struct.Seq;
-import mindustry.type.Item;
+import mindustry.type.*;
 
 import static mindustry.content.Items.*;
 
 public class KatorItems {
     public static Item
-    //Item
-    aluminum,
-    //Rocket
-    incendiaryRocket, explosiveRocket, fragBomb, rocketEMP, nuclearRocket;
+    aluminum;
 
     public static final Seq<Item> KatorItems = new Seq<>();
 
     public static void load(){
-        //Item
         aluminum = new Item("aluminum",Color.valueOf("9ebda3")){{
-            alwaysUnlocked = true;
             cost = 1f;
             hardness = 1;
         }};
