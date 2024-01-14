@@ -21,7 +21,7 @@ public class ExampleJavaMod extends Mod{
                 BaseDialog dialog = new BaseDialog("You know the rules...");
                 dialog.cont.add("And so do i...").row();
                 //mod sprites are prefixed with the mod name (this mod is called 'example-java-mod' in its config)
-                dialog.cont.button("SAY GOODBYE", dialog::hide).size(400f, 50f);
+                dialog.cont.button("SAY GOODBYE", dialog::hide).size(200f, 50f);
                 dialog.show();
             });
         });
