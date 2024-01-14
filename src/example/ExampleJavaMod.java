@@ -1,15 +1,13 @@
 package example;
 
-import arc.*;
-import arc.util.*;
+import arc.Events;
+import arc.util.Log;
+import arc.util.Time;
 import content.KatorBlocks;
 import content.KatorItems;
-import mindustry.*;
-import mindustry.content.*;
-import mindustry.game.EventType.*;
-import mindustry.gen.*;
-import mindustry.mod.*;
-import mindustry.ui.dialogs.*;
+import mindustry.game.EventType.ClientLoadEvent;
+import mindustry.mod.Mod;
+import mindustry.ui.dialogs.BaseDialog;
 
 public class ExampleJavaMod extends Mod{
 
@@ -21,9 +19,9 @@ public class ExampleJavaMod extends Mod{
             //show dialog upon startup
             Time.runTask(10f, () -> {
                 BaseDialog dialog = new BaseDialog("You know the rules...");
-                dialog.cont.add("behold").row();
+                dialog.cont.add("And so do i...").row();
                 //mod sprites are prefixed with the mod name (this mod is called 'example-java-mod' in its config)
-                dialog.cont.button("And so do i... SAY GOODBYE", dialog::hide).size(400f, 50f);
+                dialog.cont.button("SAY GOODBYE", dialog::hide).size(400f, 50f);
                 dialog.show();
             });
         });

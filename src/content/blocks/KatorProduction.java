@@ -1,21 +1,17 @@
 package content.blocks;
 
 import arc.graphics.Color;
-import arc.struct.Seq;
-import mindustry.content.Blocks;
+import content.KatorItems;
 import mindustry.content.Fx;
 import mindustry.content.Items;
-import mindustry.content.Liquids;
-import mindustry.gen.Sounds;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
-import mindustry.type.LiquidStack;
 import mindustry.world.Block;
-import mindustry.world.blocks.production.AttributeCrafter;
 import mindustry.world.blocks.production.GenericCrafter;
-import mindustry.world.draw.*;
+import mindustry.world.draw.DrawGlowRegion;
+import mindustry.world.draw.DrawMulti;
+import mindustry.world.draw.DrawRegion;
 import mindustry.world.meta.BlockGroup;
-import content.KatorItems;
 
 import static mindustry.type.ItemStack.with;
 
@@ -24,7 +20,7 @@ public class KatorProduction {
             factory1;
     public static void load() {
         //here I posted them in order of discovery in the tech tree
-        factory1 = new GenericCrafter("fucktory"){{
+        factory1 = new GenericCrafter("factory1"){{
             size = 2;
             craftTime = 60;
             invertFlip = true;
@@ -32,7 +28,13 @@ public class KatorProduction {
             outputsLiquid = true;
             liquidOutputDirections = new int[]{1, 3};
             drawer = new DrawMulti(
-                    new DrawRegion()
+                    new DrawRegion(),
+                    new DrawGlowRegion(){{
+                        alpha = 0.5f;
+                        color = Color.valueOf("ffffff");
+                        glowIntensity = 1f;
+                        glowScale = 5f;
+                     }}
             );
             craftEffect = Fx.smoke;
             group = BlockGroup.liquids;

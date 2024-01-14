@@ -1,13 +1,12 @@
 package content;
 
-import arc.graphics.*;
+import arc.graphics.Color;
 import arc.struct.Seq;
-import mindustry.type.*;
-import static mindustry.content.Items.*;
+import mindustry.type.Item;
 
 public class KatorItems {
     public static Item
-    aluminum,quartz_dust;
+    aluminum,nikel;
 
     public static final Seq<Item> KatorItems = new Seq<>();
 
@@ -17,13 +16,14 @@ public class KatorItems {
             hardness = 1;
             alwaysUnlocked = true;
         }};
-        quartz_dust = new Item("quartz_dust",Color.valueOf("202020")){{
+        nikel = new Item("nikel",Color.valueOf("73667c")){{
             cost = 0.5f;
             hardness = 0;
+            alwaysUnlocked = true;
         }};
 
         KatorItems.addAll (
-            aluminum,quartz_dust
+            aluminum,nikel
         );
     }
 }

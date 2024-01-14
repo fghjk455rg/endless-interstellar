@@ -1,6 +1,6 @@
 displayName: "Kator"
 name: "kator"
-author: "Enless's code, Sprites by kaptain Doshic and music by Saigo No Nozomi."
+author: "Enless's code, Sprites by Kaptain Doshic and music by Saigo No Nozomi."
 main: "example.ExampleJavaMod"
 description: "My first mindustry java mod."
 version: 0.0.1 alpha
