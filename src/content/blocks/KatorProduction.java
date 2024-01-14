@@ -20,7 +20,7 @@ public class KatorProduction {
         erelitforge;
     public static void load() {
         //here I posted them in order of discovery in the tech tree
-        erelitforge = new GenericCrafter("Erelit forge"){{
+        erelitforge = new GenericCrafter("erelit-forge"){{
             size = 3;
             craftTime = 120;
             invertFlip = true;

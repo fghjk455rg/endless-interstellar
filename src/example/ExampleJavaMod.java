@@ -18,8 +18,8 @@ public class ExampleJavaMod extends Mod{
         Events.on(ClientLoadEvent.class, e -> {
             //show dialog upon startup
             Time.runTask(10f, () -> {
-                BaseDialog dialog = new BaseDialog("You know the rules...");
-                dialog.cont.add("And so do i...").row();
+                BaseDialog dialog = new BaseDialog("And so do i...");
+                dialog.cont.add("New content every week!").row();
                 //mod sprites are prefixed with the mod name (this mod is called 'example-java-mod' in its config)
                 dialog.cont.button("SAY GOODBYE", dialog::hide).size(200f, 50f);
                 dialog.show();
