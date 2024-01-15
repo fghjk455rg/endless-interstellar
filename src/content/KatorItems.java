@@ -17,13 +17,13 @@ public class KatorItems {
             alwaysUnlocked = true;
         }};
         nikel = new Item("nikel",Color.valueOf("73667c")){{
-            cost = 0.5f;
-            hardness = 0;
+            cost = 1.5f;
+            hardness = 2;
             alwaysUnlocked = true;
         }};
         erelit = new Item("erelit",Color.valueOf("d6995e")){{
-            cost = 0.5f;
-            hardness = 0;
+            cost = 1.5f;
+            hardness = 2;
             alwaysUnlocked = true;
         }};
         calcite = new Item("calcite",Color.valueOf("df824d")){{
@@ -32,8 +32,9 @@ public class KatorItems {
             alwaysUnlocked = true;
         }};
         kateos = new Item("kateos",Color.valueOf("3a8f64")){{
-            cost = 0.5f;
-            hardness = 0;
+            cost = 2f;
+            charge = 0.1f;
+            hardness = 1;
             alwaysUnlocked = true;
         }};
         sulfur = new Item("sulfur",Color.valueOf("e3c367")){{
@@ -42,18 +43,18 @@ public class KatorItems {
             alwaysUnlocked = true;
         }};
         tectonite = new Item("tectonite",Color.valueOf("dd6f63")){{
-            cost = 0.5f;
+            cost = 1f;
             hardness = 0;
             alwaysUnlocked = true;
         }};
         composite = new Item("composite",Color.valueOf("4d554a")){{
-            cost = 0.5f;
-            hardness = 0;
+            cost = 4f;
+            hardness = 6;
             alwaysUnlocked = true;
         }};
         magnod = new Item("magnod",Color.valueOf("768a9a")){{
-            cost = 0.5f;
-            hardness = 0;
+            cost = 5f;
+            hardness = 3;
             alwaysUnlocked = true;
         }};
 
