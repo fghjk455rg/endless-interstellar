@@ -15,6 +15,7 @@ import mindustry.world.draw.DrawMulti;
 import mindustry.world.draw.DrawPlasma;
 import mindustry.world.draw.DrawRegion;
 import mindustry.world.meta.Env;
+import mindustry.world.blocks.environment.OreBlock;
 
 import static mindustry.type.ItemStack.with;
 
@@ -27,7 +28,9 @@ public class KatorBlocks {
             //crafting
             erelitforge,
             //storage
-            corestardust
+            corestardust,
+            //ore
+            orenikel, oreferelit, orekateos
             ;
 
     public static void load() {
@@ -40,6 +43,7 @@ public class KatorBlocks {
             //mechanical drill doesn't work in space
             envEnabled ^= Env.space;
             consumeLiquid(Liquids.water, 0.05f).boost();
+            consumePower(1f);
         }};
         //distribution
         heavyconveyor = new Conveyor("heavy-conveyor"){{
@@ -84,6 +88,16 @@ public class KatorBlocks {
             itemCapacity = 2000;
             unitCapModifier = 10;
             squareSprite = false;
+        }};
+        //ore
+        orenikel = new OreBlock(KatorItems.nikel) {{
+            oreDefault = false;
+        }};
+        oreferelit = new OreBlock(KatorItems.ferelit) {{
+            oreDefault = false;
+        }};
+        orekateos = new OreBlock(KatorItems.kateos) {{
+            oreDefault = false;
         }};
     }
 }
