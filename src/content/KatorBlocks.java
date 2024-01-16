@@ -11,7 +11,6 @@ import mindustry.world.draw.DrawGlowRegion;
 import mindustry.world.draw.DrawMulti;
 import mindustry.world.draw.DrawPlasma;
 import mindustry.world.draw.DrawRegion;
-import mindustry.world.meta.BuildVisibility;
 import mindustry.world.meta.Env;
 
 import static mindustry.type.ItemStack.with;
@@ -26,7 +25,7 @@ public class KatorBlocks {
 
     public static void load() {
         erelitforge = new GenericCrafter("erelit-forge"){{
-            requirements(Category.production, with(KatorItems.ferelit, 60, KatorItems.kateos, 60, KatorItems.nikel, 80));
+            requirements(Category.crafting, with(KatorItems.ferelit, 60, KatorItems.kateos, 60, KatorItems.nikel, 80));
             size = 3;
             craftTime = 300;
             solid = true;
@@ -51,7 +50,7 @@ public class KatorBlocks {
             squareSprite = false;
         }};
         corestardust = new CoreBlock("core-star-dust"){{
-            requirements(Category.effect, BuildVisibility.editorOnly, with( KatorItems.nikel, 400, KatorItems.ferelit, 600, KatorItems.kateos, 800));
+            requirements(Category.effect, with( KatorItems.nikel, 400, KatorItems.ferelit, 600, KatorItems.kateos, 800));
             size = 3;
             alwaysUnlocked = true;
             squareSprite = false;

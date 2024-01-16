@@ -7,12 +7,12 @@ public class KatorLiquids {
     public static Liquid acid, argon, steam;
 
     public static void load() {
-        acid = new Liquid("associated-petroleum-gas", Color.valueOf("7c539e")) {{
+        acid = new Liquid("acid", Color.valueOf("87eba1")) {{
         }};
-        argon = new Liquid("masut", Color.valueOf("0d151f")){{
+        argon = new Liquid("argon", Color.valueOf("a783fb")){{
             gas = true;
         }};
-        steam = new Liquid("steam", Color.valueOf("f0f0f0")) {{
+        steam = new Liquid("steam", Color.valueOf("87eba1")) {{
             temperature = 1f;
             gas = true;
         }};
