@@ -12,7 +12,7 @@ public class KatorLiquids {
         argon = new Liquid("argon", Color.valueOf("a783fb")){{
             gas = true;
         }};
-        steam = new Liquid("steam", Color.valueOf("87eba1")) {{
+        steam = new Liquid("steam", Color.valueOf("f8feff")) {{
             temperature = 1f;
             gas = true;
         }};
