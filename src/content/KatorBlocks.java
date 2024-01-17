@@ -60,21 +60,25 @@ public class KatorBlocks {
             tier = 3;
             drillTime = 240;
             size = 4;
+            drillEffect = Fx.mineBig;
             //mechanical drill doesn't work in space
             envEnabled ^= Env.space;
             consumeLiquid(Liquids.water, 0.025f).boost();
             consumePower(3f);
+            squareSprite = false;
         }};
         //power
         energychannel = new PowerNode("energy-channel"){{
             requirements(Category.power, with(KatorItems.kateos, 2, KatorItems.nikel, 2));
             maxNodes = 4;
             laserRange = 22;
+            squareSprite = false;
         }};
         substation = new PowerNode("substation"){{
             requirements(Category.power, with(KatorItems.kateos, 6, KatorItems.nikel, 4));
             maxNodes = 12;
-            laserRange = 10;
+            laserRange = 6;
+            squareSprite = false;
         }};
         //crafting
         erelitforge = new GenericCrafter("erelit-forge"){{
@@ -117,7 +121,7 @@ public class KatorBlocks {
                     }},
                     new DrawHeatOutput()
             );
-            consumeLiquid(KatorLiquids.acid, 12f);
+            consumeLiquid(KatorLiquids.acid, 0.2f);
             outputItems = ItemStack.with(KatorItems.erelit, 2);
         }};
         //distribution
