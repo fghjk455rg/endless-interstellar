@@ -5,15 +5,18 @@ import arc.math.Interp;
 import mindustry.content.Fx;
 import mindustry.content.Items;
 import mindustry.content.Liquids;
+import mindustry.entities.bullet.BasicBulletType;
 import mindustry.entities.bullet.LaserBulletType;
 import mindustry.entities.effect.MultiEffect;
 import mindustry.entities.part.RegionPart;
+import mindustry.entities.pattern.ShootAlternate;
 import mindustry.gen.Sounds;
 import mindustry.graphics.Pal;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
 import mindustry.world.Block;
 import mindustry.world.blocks.defense.Wall;
+import mindustry.world.blocks.defense.turrets.ItemTurret;
 import mindustry.world.blocks.defense.turrets.PowerTurret;
 import mindustry.world.blocks.distribution.Conveyor;
 import mindustry.world.blocks.environment.OreBlock;
@@ -181,9 +184,9 @@ public class KatorBlocks {
         //turret
 
         vector = new PowerTurret("vector"){{
-            requirements(Category.turret, with(Items.copper, 60, Items.lead, 70, Items.silicon, 60, Items.titanium, 30));
-            range = 120f;
-            shoot.firstShotDelay = 40f;
+            requirements(Category.turret, with( KatorItems.kateos, 40,KatorItems.nikel, 40));
+            range = 140f;
+            shoot.firstShotDelay = 20f;
             recoil = 2f;
             reload = 200f;
             shake = 1f;
@@ -191,7 +194,7 @@ public class KatorBlocks {
             smokeEffect = Fx.none;
             heatColor = Color.red;
             size = 2;
-            scaledHealth = 360;
+            scaledHealth = 300;
             targetAir = false;
             moveWhileCharging = false;
             accurateDelay = false;
@@ -204,17 +207,17 @@ public class KatorBlocks {
                         new RegionPart("-barrel"){{
                             heatProgress = PartProgress.warmup;
                             progress = PartProgress.recoil.curve(Interp.pow2In);
-                            moveY = -5f * 4f / 3f;
+                            moveY = -3f * 4f / 3f;
                             heatColor = Color.valueOf("f03b0e");
                             mirror = false;
-                            heatColor = Color.red.cpy();
+                            under = true;
                         }},
                         new RegionPart("-blade"){{
                             progress = PartProgress.warmup;
                             mirror = true;
                             moveX = 2f * 4f / 3f;
                             moveY = -0.5f;
-                            moveRot = -40f;
+                            moveRot = -20f;
                             under = true;
                         }});
             }};
@@ -232,6 +235,61 @@ public class KatorBlocks {
                 ammoMultiplier = 1f;
                 pierceCap = 4;
             }};
+        }};
+
+        twins = new ItemTurret("twins"){{
+            requirements(Category.turret, with(KatorItems.composite, 35));
+            ammo(
+                    KatorItems.nikel,  new BasicBulletType(2f, 60){{
+                        width = 7f;
+                        height = 10f;
+                        lifetime = 60f;
+                        ammoMultiplier = 2;
+                    }},
+                    Items.graphite, new BasicBulletType(3f, 80){{
+                        width = 9f;
+                        height = 12f;
+                        reloadMultiplier = 0.6f;
+                        ammoMultiplier = 2;
+                        lifetime = 80f;
+                    }},
+                    KatorItems.magnod, new BasicBulletType(4f, 12){{
+                        width = 7f;
+                        height = 10f;
+                        homingPower = 1f;
+                        reloadMultiplier = 1.5f;
+                        ammoMultiplier = 6;
+                        lifetime = 60f;
+                    }}
+            );
+
+            shoot = new ShootAlternate(3.5f);
+
+            recoils = 2;
+            drawer = new DrawTurret(){{
+                for(int i = 0; i < 2; i ++){
+                    int f = i;
+                    parts.add(new RegionPart("-barrel-" + (i == 0 ? "l" : "r")){{
+                        progress = PartProgress.recoil;
+                        recoilIndex = f;
+                        under = true;
+                        moveY = -4f;
+                    }});
+                }
+            }};
+
+            recoil = 0.5f;
+            shootY = 3f;
+            reload = 5f;
+            range = 130;
+            shootCone = 10f;
+            ammoUseEffect = Fx.casing1;
+            health = 400;
+            inaccuracy = 4f;
+            rotateSpeed = 5f;
+            coolant = consumeCoolant(0.2f);
+
+            limitRange();
         }};
 
         //wall

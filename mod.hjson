@@ -1,11 +1,11 @@
-displayName: Kator
-name:"kator
-author: Enless's code, Sprites by Kaptain Doshic and music by Saigo No Nozomi.
-main: example.ExampleJavaMod
-description: My first mindustry java mod.
+displayName: "Kator"
+name:"kator"
+author: "Enless's code, Sprites by Kaptain Doshic and music by Saigo No Nozomi."
+main: "example.ExampleJavaMod"
+description: "My first mindustry java mod."
 version: 0.0.1 alpha
-minGameVersion: 145
+minGameVersion: "145"
 java: true
 hidden: false
 hideBrowser: false
-subtitle: Kator without "ga"
+subtitle: "Kator without -ga"
