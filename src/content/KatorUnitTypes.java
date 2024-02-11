@@ -3,12 +3,12 @@ package content;
 import arc.graphics.Color;
 import mindustry.content.Fx;
 import mindustry.entities.bullet.LaserBoltBulletType;
+import mindustry.gen.MechUnit;
 import mindustry.gen.Sounds;
 import mindustry.graphics.Pal;
 import mindustry.type.UnitType;
 import mindustry.type.Weapon;
 import mindustry.type.ammo.PowerAmmoType;
-
 
 public class KatorUnitTypes {
     public static UnitType
@@ -16,6 +16,7 @@ public class KatorUnitTypes {
 
     public static void load() {
         hodor = new UnitType("hodor"){{
+            constructor = MechUnit::create;
             canBoost = true;
             boostMultiplier = 1.5f;
             speed = 0.55f;
