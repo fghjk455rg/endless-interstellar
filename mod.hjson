@@ -8,4 +8,4 @@ minGameVersion: "145"
 java: true
 hidden: false
 hideBrowser: false
-subtitle: "Kator without -ga"
+subtitle: "without -ga"

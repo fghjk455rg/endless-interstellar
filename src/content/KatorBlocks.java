@@ -174,7 +174,7 @@ public class KatorBlocks {
             size = 3;
             alwaysUnlocked = true;
             isFirstTier = true;
-            //unitType = ;
+            unitType = KatorUnitTypes.hodor;
             health = 2000;
             itemCapacity = 2000;
             unitCapModifier = 10;
