@@ -239,21 +239,22 @@ public class KatorBlocks {
 
         twins = new ItemTurret("twins"){{
             requirements(Category.turret, with(KatorItems.composite, 35));
+            size = 2;
             ammo(
-                    KatorItems.nikel,  new BasicBulletType(2f, 60){{
+                    KatorItems.nikel,  new BasicBulletType(3f, 58){{
                         width = 7f;
                         height = 10f;
                         lifetime = 60f;
                         ammoMultiplier = 2;
                     }},
-                    Items.graphite, new BasicBulletType(3f, 80){{
+                    Items.graphite, new BasicBulletType(2f, 86){{
                         width = 9f;
                         height = 12f;
-                        reloadMultiplier = 0.6f;
+                        reloadMultiplier = 0.4f;
                         ammoMultiplier = 2;
                         lifetime = 80f;
                     }},
-                    KatorItems.magnod, new BasicBulletType(4f, 12){{
+                    KatorItems.magnod, new BasicBulletType(4f, 42){{
                         width = 7f;
                         height = 10f;
                         homingPower = 1f;
