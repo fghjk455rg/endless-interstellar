@@ -19,14 +19,11 @@ public class KatorUnitTypes {
             constructor = MechUnit::create;
             canBoost = true;
             boostMultiplier = 1.5f;
-            speed = 0.55f;
-            hitSize = 8f;
+            speed = 0.5f;
+            hitSize = 7f;
             health = 120f;
             buildSpeed = 0.8f;
-            armor = 1f;
             alwaysUnlocked = true;
-            mineSpeed = 3f;
-            mineTier = 2;
 
             ammoType = new PowerAmmoType(1000);
 
@@ -44,7 +41,7 @@ public class KatorUnitTypes {
                     lifetime = 30f;
                     healPercent = 5f;
                     collidesTeam = true;
-                    backColor = Pal.heal;
+                    backColor = Pal.bulletYellow;
                     frontColor = Color.white;
                 }};
             }});

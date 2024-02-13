@@ -18,9 +18,8 @@ import mindustry.world.Block;
 import mindustry.world.blocks.defense.Wall;
 import mindustry.world.blocks.defense.turrets.ItemTurret;
 import mindustry.world.blocks.defense.turrets.PowerTurret;
-import mindustry.world.blocks.distribution.Conveyor;
+import mindustry.world.blocks.distribution.*;
 import mindustry.world.blocks.environment.OreBlock;
-import mindustry.world.blocks.heat.HeatProducer;
 import mindustry.world.blocks.power.PowerNode;
 import mindustry.world.blocks.power.ThermalGenerator;
 import mindustry.world.blocks.production.Drill;
@@ -40,7 +39,7 @@ public class KatorBlocks {
             //crafting
             erelitforge, chemicalheater, cauldron, remover, electroliser, compositepress, passivenuclearheater, nuclearreactor, aciddecomposer, magnetizer, centrifuge,
             //distribution
-            heavyconveyor, heavyrouter,
+            heavyconveyor, heavyrouter, overflowredirector, heavyjunction, heavybridge, heavysorter,
             //storage
             corestardust,
             //turret
@@ -93,7 +92,7 @@ public class KatorBlocks {
             squareSprite = false;
         }};
         heatgenerator = new ThermalGenerator("heat-generator"){{
-            requirements(Category.power, with(Items.copper, 40, Items.graphite, 35, Items.lead, 50, Items.silicon, 35, Items.metaglass, 40));
+            requirements(Category.power, with(KatorItems.ferelit, 1, KatorItems.kateos, 1, KatorItems.nikel, 1));
             powerProduction = 3f;
             generateEffect = Fx.redgeneratespark;
             effectChance = 0.011f;
@@ -138,13 +137,15 @@ public class KatorBlocks {
             outputItems = ItemStack.with(KatorItems.erelit, 2);
             squareSprite = false;
         }};
+        //delete ih future
+        /*
         chemicalheater = new HeatProducer("chemical-heater"){{
             requirements(Category.crafting, with(KatorItems.ferelit, 60, KatorItems.kateos, 60, KatorItems.nikel, 80));
             size = 3;
             craftTime = 240;
             drawer = new DrawMulti(
                     new DrawRegion("-bottom"),
-                    new DrawLiquidTile(KatorLiquids.acid),
+                    new DrawLiquidTile(Liquids.nitrogen),
                     new DrawRegion(),
                     new DrawGlowRegion(){{
                         alpha = 0.1f;
@@ -154,9 +155,10 @@ public class KatorBlocks {
                     }},
                     new DrawHeatOutput()
             );
-            consumeLiquid(KatorLiquids.acid, 0.2f);
-            outputItems = ItemStack.with(KatorItems.erelit, 2);
+            consumeLiquid(Liquids.nitrogen, 0.2f);
+            outputItems = ItemStack.with(Items.fissileMatter, 2);
         }};
+         */
 
         //distribution
 
@@ -165,6 +167,40 @@ public class KatorBlocks {
             health = 100;
             speed = 0.03f;
             displayedSpeed = 4.2f;
+            junctionReplacement = heavyjunction;
+            bridgeReplacement = heavybridge;
+        }};
+        heavyrouter = new Router("heavy-router"){{
+            requirements(Category.distribution, with(KatorItems.kateos, 5, KatorItems.nikel, 2));
+            buildCostMultiplier = 4f;
+            health = 120;
+        }};
+        overflowredirector = new OverflowGate("overflow-redirector"){{
+            requirements(Category.distribution, with(KatorItems.kateos, 6, KatorItems.nikel, 3));
+            buildCostMultiplier = 3f;
+            health = 140;
+        }};
+        heavysorter = new Sorter("heavy-sorter"){{
+            requirements(Category.distribution, with(KatorItems.kateos, 8, KatorItems.nikel, 2));
+            buildCostMultiplier = 3f;
+            health = 140;
+        }};
+        heavybridge = new BufferedItemBridge("heavy-bridge"){{
+            requirements(Category.distribution, with(KatorItems.kateos, 5, KatorItems.nikel, 5));
+            fadeIn = moveArrows = false;
+            range = 4;
+            speed = 74f;
+            arrowSpacing = 6f;
+            bufferCapacity = 14;
+            health = 120;
+        }};
+        heavyjunction = new Junction("heavy-junction"){{
+            requirements(Category.distribution, with(KatorItems.kateos, 3, KatorItems.nikel, 2));
+            speed = 26;
+            capacity = 6;
+            health = 30;
+            buildCostMultiplier = 6f;
+            health = 120;
         }};
 
         //storage
