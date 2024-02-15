@@ -1,2 +1,2 @@
 # A Java Mindustry mod.
-KATOR WITHOUT -GA!!!
+Enless's code, Sprites by Kaptain Doshic and music by Saigo No Nozomi.

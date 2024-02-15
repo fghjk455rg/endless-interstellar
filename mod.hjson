@@ -1,11 +1,11 @@
-displayName: "Kator"
+displayName: "Endless Interstellar"
 name:"kator"
 author: "Enless's code, Sprites by Kaptain Doshic and music by Saigo No Nozomi."
 main: "example.ExampleJavaMod"
-description: "My first mindustry java mod."
-version: 0.0.22 alpha
+description: "WorkInProgress"
+version: 0.0.23 alpha
 minGameVersion: "145"
 java: true
 hidden: false
 hideBrowser: false
-subtitle: "without -ga"
+subtitle: "Act 1 - Septango"

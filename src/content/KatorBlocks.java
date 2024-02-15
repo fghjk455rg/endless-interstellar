@@ -35,7 +35,7 @@ public class KatorBlocks {
             //production
             screwdriver, laserdriver, rocketcher, ventpump, inertturbine, well, deepdrill, vulcaniteextractor,
             //power
-            energychannel, substation, energyflow, vulcanitebattery, ionbattery, toroidalmagneticsupermassiveenergystorage, heatgenerator, turbine, largeturbine, indoorturbine, ice,
+            energychannel, substation, energyflow, vulcanitebattery, ionbattery, toroidalmagneticsupermassiveenergystorage, heatgenerator, ice, turbine, largeturbine, indoorturbine,
             //crafting
             erelitforge, chemicalheater, cauldron, remover, electroliser, compositepress, passivenuclearheater, nuclearreactor, aciddecomposer, magnetizer, centrifuge,
             //distribution
@@ -65,7 +65,7 @@ public class KatorBlocks {
             consumePower(1f);
         }};
         laserdriver = new Drill("laserdriver"){{
-            requirements(Category.production, with(KatorItems.kateos, 10, KatorItems.nikel, 18));
+            requirements(Category.production, with(KatorItems.kateos, 1, KatorItems.nikel, 1));
             tier = 3;
             drillTime = 240;
             size = 4;

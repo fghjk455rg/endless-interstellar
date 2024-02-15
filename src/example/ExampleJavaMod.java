@@ -15,14 +15,10 @@ public class ExampleJavaMod extends Mod{
 
     public ExampleJavaMod(){
         Log.info("Loaded ExampleJavaMod constructor.");
-
-        //listen for game load event
         Events.on(ClientLoadEvent.class, e -> {
-            //show dialog upon startup
             Time.runTask(10f, () -> {
                 BaseDialog dialog = new BaseDialog("New content every week!");
                 dialog.cont.add("And so do i...").row();
-                //mod sprites are prefixed with the mod name (this mod is called 'example-java-mod' in its config)
                 dialog.cont.button("SAY GOODBYE", dialog::hide).size(200f, 50f);
                 dialog.show();
             });
