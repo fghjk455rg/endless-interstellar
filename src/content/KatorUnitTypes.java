@@ -26,7 +26,7 @@ public class KatorUnitTypes {
             hodor, corseid;
 
     public static void load() {
-        hodor = new UnitType("hodor"){{
+        hodor = new ErekirUnitType("hodor"){{
             constructor = MechUnit::create;
             canBoost = true;
             boostMultiplier = 1.5f;
@@ -94,7 +94,7 @@ public class KatorUnitTypes {
             targetAir = false;
             researchCostMultiplier = 0f;
 
-            weapons.add(new Weapon("corseid-weapon"){{
+            weapons.add(new Weapon("kator-corseid-weapon"){{
                 shootSound = Sounds.blaster;
                 showStatSprite = false;
                 x = 5f;
@@ -117,12 +117,12 @@ public class KatorUnitTypes {
                     frontColor = Color.white;
 
                     knockback = 1f;
-                    lifetime = 90f;
-                    width = height = 6f;
+                    lifetime = 60f;
+                    width = height = 9f;
                     splashDamageRadius = 5f;
                     splashDamage = 20f;
 
-                    trailLength = 20;
+                    trailLength = 27;
                     trailWidth = 2.5f;
                     trailEffect = Fx.none;
                     trailColor = backColor;
