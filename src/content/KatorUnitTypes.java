@@ -8,7 +8,7 @@ import mindustry.entities.Effect;
 import mindustry.entities.bullet.BasicBulletType;
 import mindustry.entities.effect.MultiEffect;
 import mindustry.entities.effect.WaveEffect;
-import mindustry.gen.MechUnit;
+import mindustry.gen.*;
 import mindustry.gen.Sounds;
 import mindustry.graphics.Drawf;
 import mindustry.graphics.Layer;
@@ -19,7 +19,7 @@ import mindustry.type.unit.ErekirUnitType;
 
 import static arc.graphics.g2d.Draw.color;
 import static arc.graphics.g2d.Lines.stroke;
-import static mindustry.content.StatusEffects.*;
+import static mindustry.content.StatusEffects.burning;
 
 public class KatorUnitTypes {
     public static UnitType
@@ -61,6 +61,7 @@ public class KatorUnitTypes {
             }});
     }};
         corseid = new ErekirUnitType("corseid"){{
+            constructor = LegsUnit::create;
             speed = 0.72f;
             drag = 0.11f;
             hitSize = 9f;
