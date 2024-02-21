@@ -8,6 +8,8 @@ public class KatorItems {
     public static Item
             ferelit,nikel,erelit,calcite,kateos,sulfur,tectonite,composite,magnod;
 
+    public static final Seq<Item> snewerusItems = new Seq<>();
+
     public static final Seq<Item> KatorItems = new Seq<>();
 
     public static void load(){
@@ -58,7 +60,7 @@ public class KatorItems {
             alwaysUnlocked = true;
         }};
 
-        KatorItems.addAll (
+        snewerusItems.addAll (
                 ferelit,nikel,erelit,calcite,kateos,sulfur,tectonite,composite,magnod
         );
     }

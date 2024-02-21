@@ -38,7 +38,7 @@ public class KatorUnitTypes {
 
             ammoType = new PowerAmmoType(1000);
 
-            weapons.add(new Weapon("hodor-weapon"){{
+            weapons.add(new Weapon("kator-hodor-weapon"){{
                 top = false;
                 shootY = 2f;
                 reload = 30f;
@@ -46,7 +46,6 @@ public class KatorUnitTypes {
                 alternate = false;
                 ejectEffect = Fx.none;
                 recoil = 2f;
-                shootSound = Sounds.blaster;
 
                 bullet = new BasicBulletType(5f, 20){{
                     width = 6f;

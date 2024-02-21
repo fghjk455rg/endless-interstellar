@@ -7,6 +7,7 @@ import content.KatorBlocks;
 import content.KatorItems;
 import content.KatorLiquids;
 import content.KatorUnitTypes;
+import content.KatorPlanets;
 import mindustry.game.EventType.ClientLoadEvent;
 import mindustry.mod.Mod;
 import mindustry.ui.dialogs.BaseDialog;
@@ -31,5 +32,6 @@ public class ExampleJavaMod extends Mod{
         KatorLiquids.load();
         KatorUnitTypes.load();
         KatorBlocks.load();
+        KatorPlanets.load();
     }
 }
