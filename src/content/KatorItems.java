@@ -61,7 +61,7 @@ public class KatorItems {
         }};
 
         snewerusItems.addAll (
-                ferelit,niсkel,erelit,calcite,kateos,sulfur,tectonite,composite,magnod
+                ferelit,nickel,erelit,calcite,kateos,sulfur,tectonite,composite,magnod
         );
     }
 }
