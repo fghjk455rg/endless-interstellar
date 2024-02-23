@@ -6,7 +6,7 @@ import mindustry.type.Item;
 
 public class KatorItems {
     public static Item
-            ferelit,nikel,erelit,calcite,kateos,sulfur,tectonite,composite,magnod;
+            ferelit,nickel,erelit,calcite,kateos,sulfur,tectonite,composite,magnod;
 
     public static final Seq<Item> snewerusItems = new Seq<>();
 
@@ -18,7 +18,7 @@ public class KatorItems {
             hardness = 1;
             alwaysUnlocked = true;
         }};
-        nikel = new Item("nikel",Color.valueOf("73667c")){{
+        nickel = new Item("nickel",Color.valueOf("73667c")){{
             cost = 1.5f;
             hardness = 2;
             alwaysUnlocked = true;
@@ -61,7 +61,7 @@ public class KatorItems {
         }};
 
         snewerusItems.addAll (
-                ferelit,nikel,erelit,calcite,kateos,sulfur,tectonite,composite,magnod
+                ferelit,niсkel,erelit,calcite,kateos,sulfur,tectonite,composite,magnod
         );
     }
 }

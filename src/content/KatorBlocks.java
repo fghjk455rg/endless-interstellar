@@ -45,7 +45,7 @@ public class KatorBlocks {
             //turret
             vector, twins, arbitrator, shaft, hammer, heavyrain, volcano, sparky,
             //wall
-            nikelwall, nikellargewall,
+            nickelwall, nickellargewall,
             //ore
             orenikel, oreferelit, orekateos, calcitedust
             ;
@@ -55,7 +55,7 @@ public class KatorBlocks {
         //production
 
         screwdriver = new Drill("screwdriver"){{
-            requirements(Category.production, with(KatorItems.kateos, 10, KatorItems.nikel, 18));
+            requirements(Category.production, with(KatorItems.kateos, 10, KatorItems.nickel, 18));
             tier = 2;
             drillTime = 300;
             size = 2;
@@ -65,7 +65,7 @@ public class KatorBlocks {
             consumePower(1f);
         }};
         laserdriver = new Drill("laserdriver"){{
-            requirements(Category.production, with(KatorItems.kateos, 1, KatorItems.nikel, 1));
+            requirements(Category.production, with(KatorItems.kateos, 1, KatorItems.nickel, 1));
             tier = 3;
             drillTime = 240;
             size = 4;
@@ -80,19 +80,19 @@ public class KatorBlocks {
         //power
 
         energychannel = new PowerNode("energy-channel"){{
-            requirements(Category.power, with(KatorItems.kateos, 2, KatorItems.nikel, 2));
+            requirements(Category.power, with(KatorItems.kateos, 2, KatorItems.nickel, 2));
             maxNodes = 3;
             laserRange = 30;
             squareSprite = false;
         }};
         substation = new PowerNode("substation"){{
-            requirements(Category.power, with(KatorItems.kateos, 6, KatorItems.nikel, 4));
+            requirements(Category.power, with(KatorItems.kateos, 6, KatorItems.nickel, 4));
             maxNodes = 12;
             laserRange = 6;
             squareSprite = false;
         }};
         heatgenerator = new ThermalGenerator("heat-generator"){{
-            requirements(Category.power, with(KatorItems.ferelit, 1, KatorItems.kateos, 1, KatorItems.nikel, 1));
+            requirements(Category.power, with(KatorItems.ferelit, 1, KatorItems.kateos, 1, KatorItems.nickel, 1));
             powerProduction = 3f;
             generateEffect = Fx.redgeneratespark;
             effectChance = 0.011f;
@@ -114,7 +114,7 @@ public class KatorBlocks {
         //crafting
 
         erelitforge = new GenericCrafter("erelit-forge"){{
-            requirements(Category.crafting, with(KatorItems.ferelit, 60, KatorItems.kateos, 60, KatorItems.nikel, 80));
+            requirements(Category.crafting, with(KatorItems.ferelit, 60, KatorItems.kateos, 60, KatorItems.nickel, 80));
             size = 3;
             craftTime = 240;
             drawer = new DrawMulti(
@@ -132,12 +132,12 @@ public class KatorBlocks {
                     }}
             );
             craftEffect = Fx.blastsmoke;
-            consumeItems(with(KatorItems.ferelit, 1, KatorItems.nikel, 1,  KatorItems.calcite, 2));
+            consumeItems(with(KatorItems.ferelit, 1, KatorItems.nickel, 1,  KatorItems.calcite, 2));
             consumePower(3f);
             outputItems = ItemStack.with(KatorItems.erelit, 2);
             squareSprite = false;
         }};
-        //delete ih future
+        //delete in future
         /*
         chemicalheater = new HeatProducer("chemical-heater"){{
             requirements(Category.crafting, with(KatorItems.ferelit, 60, KatorItems.kateos, 60, KatorItems.nikel, 80));
@@ -163,7 +163,7 @@ public class KatorBlocks {
         //distribution
 
         heavyconveyor = new Conveyor("heavy-conveyor"){{
-            requirements(Category.distribution, with(KatorItems.kateos, 2, KatorItems.nikel, 1));
+            requirements(Category.distribution, with(KatorItems.kateos, 2, KatorItems.nickel, 1));
             health = 100;
             speed = 0.03f;
             displayedSpeed = 4.2f;
@@ -171,22 +171,22 @@ public class KatorBlocks {
             bridgeReplacement = heavybridge;
         }};
         heavyrouter = new Router("heavy-router"){{
-            requirements(Category.distribution, with(KatorItems.kateos, 5, KatorItems.nikel, 2));
+            requirements(Category.distribution, with(KatorItems.kateos, 5, KatorItems.nickel, 2));
             buildCostMultiplier = 4f;
             health = 120;
         }};
         overflowredirector = new OverflowGate("overflow-redirector"){{
-            requirements(Category.distribution, with(KatorItems.kateos, 6, KatorItems.nikel, 3));
+            requirements(Category.distribution, with(KatorItems.kateos, 6, KatorItems.nickel, 3));
             buildCostMultiplier = 3f;
             health = 140;
         }};
         heavysorter = new Sorter("heavy-sorter"){{
-            requirements(Category.distribution, with(KatorItems.kateos, 8, KatorItems.nikel, 2));
+            requirements(Category.distribution, with(KatorItems.kateos, 8, KatorItems.nickel, 2));
             buildCostMultiplier = 3f;
             health = 140;
         }};
         heavybridge = new BufferedItemBridge("heavy-bridge"){{
-            requirements(Category.distribution, with(KatorItems.kateos, 5, KatorItems.nikel, 5));
+            requirements(Category.distribution, with(KatorItems.kateos, 5, KatorItems.nickel, 5));
             fadeIn = moveArrows = false;
             range = 4;
             speed = 74f;
@@ -195,7 +195,7 @@ public class KatorBlocks {
             health = 120;
         }};
         heavyjunction = new Junction("heavy-junction"){{
-            requirements(Category.distribution, with(KatorItems.kateos, 3, KatorItems.nikel, 2));
+            requirements(Category.distribution, with(KatorItems.kateos, 3, KatorItems.nickel, 2));
             speed = 26;
             capacity = 6;
             health = 30;
@@ -206,7 +206,7 @@ public class KatorBlocks {
         //storage
 
         corestardust = new CoreBlock("core-star-dust"){{
-            requirements(Category.effect, with( KatorItems.ferelit, 600, KatorItems.kateos, 800,KatorItems.nikel, 400));
+            requirements(Category.effect, with( KatorItems.ferelit, 600, KatorItems.kateos, 800,KatorItems.nickel, 400));
             size = 3;
             alwaysUnlocked = true;
             isFirstTier = true;
@@ -220,7 +220,7 @@ public class KatorBlocks {
         //turret
 
         vector = new PowerTurret("vector"){{
-            requirements(Category.turret, with( KatorItems.kateos, 40,KatorItems.nikel, 40));
+            requirements(Category.turret, with( KatorItems.kateos, 40,KatorItems.nickel, 40));
             range = 140f;
             shoot.firstShotDelay = 20f;
             recoil = 2f;
@@ -277,7 +277,7 @@ public class KatorBlocks {
             requirements(Category.turret, with(KatorItems.composite, 35));
             size = 2;
             ammo(
-                    KatorItems.nikel,  new BasicBulletType(3f, 58){{
+                    KatorItems.nickel,  new BasicBulletType(3f, 58){{
                         width = 7f;
                         height = 10f;
                         lifetime = 60f;
@@ -331,14 +331,14 @@ public class KatorBlocks {
 
         //wall
 
-        nikelwall = new Wall("nikel-wall"){{
-            requirements(Category.defense, with(KatorItems.nikel, 6));
+        nickelwall = new Wall("nickel-wall"){{
+            requirements(Category.defense, with(KatorItems.nickel, 6));
             health = 180 * 4;
             armor = 2f;
             buildCostMultiplier = 8f;
         }};
-        nikellargewall = new Wall("nikel-large-wall"){{
-            requirements(Category.defense, with(KatorItems.nikel, 24));
+        nickellargewall = new Wall("nickel-large-wall"){{
+            requirements(Category.defense, with(KatorItems.nickel, 24));
             health = 760 * 4;
             armor = 2f;
             buildCostMultiplier = 8f;
@@ -346,7 +346,7 @@ public class KatorBlocks {
 
         //ore
 
-        orenikel = new OreBlock(KatorItems.nikel) {{
+        orenikel = new OreBlock(KatorItems.nickel) {{
             oreDefault = false;
         }};
         oreferelit = new OreBlock(KatorItems.ferelit) {{
