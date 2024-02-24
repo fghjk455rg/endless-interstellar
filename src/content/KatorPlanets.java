@@ -19,7 +19,7 @@ public class KatorPlanets{
                 snewerus;
 
         public static void load(){
-        caereleum = new Planet("caereleum", Planets.sun, 5f) {{
+        caereleum = new Planet("caereleum", Planets.sun, 10f) {{
             bloom = true;
             accessible = false;
 

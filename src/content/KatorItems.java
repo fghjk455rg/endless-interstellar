@@ -4,6 +4,8 @@ import arc.graphics.Color;
 import arc.struct.Seq;
 import mindustry.type.Item;
 
+import static mindustry.content.Items.copper;
+
 public class KatorItems {
     public static Item
             ferelit,nickel,erelit,calcite,kateos,sulfur,tectonite,composite,magnod;
@@ -61,7 +63,7 @@ public class KatorItems {
         }};
 
         snewerusItems.addAll (
-                ferelit,nickel,erelit,calcite,kateos,sulfur,tectonite,composite,magnod
+                ferelit,nickel,erelit,calcite,kateos,sulfur,tectonite,composite,magnod,copper
         );
     }
 }
