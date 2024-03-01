@@ -20,6 +20,7 @@ import mindustry.world.blocks.defense.turrets.ItemTurret;
 import mindustry.world.blocks.defense.turrets.PowerTurret;
 import mindustry.world.blocks.distribution.*;
 import mindustry.world.blocks.environment.OreBlock;
+import mindustry.world.blocks.heat.HeatProducer;
 import mindustry.world.blocks.power.PowerNode;
 import mindustry.world.blocks.power.ThermalGenerator;
 import mindustry.world.blocks.production.Drill;
@@ -137,15 +138,14 @@ public class KatorBlocks {
             outputItems = ItemStack.with(KatorItems.erelit, 2);
             squareSprite = false;
         }};
-        //delete in future
-        /*
+
         chemicalheater = new HeatProducer("chemical-heater"){{
-            requirements(Category.crafting, with(KatorItems.ferelit, 60, KatorItems.kateos, 60, KatorItems.nikel, 80));
+            requirements(Category.crafting, with(KatorItems.ferelit, 60, KatorItems.kateos, 60, KatorItems.nickel, 80));
             size = 3;
             craftTime = 240;
             drawer = new DrawMulti(
                     new DrawRegion("-bottom"),
-                    new DrawLiquidTile(Liquids.nitrogen),
+                    new DrawLiquidTile(Liquids.hydrogen),
                     new DrawRegion(),
                     new DrawGlowRegion(){{
                         alpha = 0.1f;
@@ -156,9 +156,15 @@ public class KatorBlocks {
                     new DrawHeatOutput()
             );
             consumeLiquid(Liquids.nitrogen, 0.2f);
-            outputItems = ItemStack.with(Items.fissileMatter, 2);
+            consumeItem(KatorItems.kateos, 2);
+            outputItems = ItemStack.with(KatorItems.calcite, 2);
+            liquidCapacity = 20f;
+            itemCapacity = 20;
+            rotateDraw = false;
+            regionRotated1 = 1;
+            ambientSound = Sounds.hum;
+            heatOutput = 8f;
         }};
-         */
 
         //distribution
 

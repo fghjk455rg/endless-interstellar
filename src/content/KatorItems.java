@@ -4,7 +4,7 @@ import arc.graphics.Color;
 import arc.struct.Seq;
 import mindustry.type.Item;
 
-import static mindustry.content.Items.copper;
+import static mindustry.content.Items.*;
 
 public class KatorItems {
     public static Item
@@ -61,9 +61,10 @@ public class KatorItems {
             hardness = 3;
             alwaysUnlocked = true;
         }};
+        //обсидиан + никель = имбовый крафт
 
         snewerusItems.addAll (
-                ferelit,nickel,erelit,calcite,kateos,sulfur,tectonite,composite,magnod,copper
+                ferelit,nickel,erelit,calcite,kateos,sulfur,tectonite,composite,magnod,tungsten,graphite
         );
     }
 }
