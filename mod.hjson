@@ -1,4 +1,4 @@
-displayName: "Endless Interstellar"
+displayName: "Kator"
 name:"kator"
 author: "Enless's code, Sprites by Kaptain Doshic and music by Saigo No Nozomi."
 main: "example.ExampleJavaMod"
@@ -8,4 +8,4 @@ minGameVersion: "145"
 java: true
 hidden: false
 hideBrowser: false
-subtitle: "Act 1 - Septango"
+subtitle: "without -ga"

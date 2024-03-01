@@ -5,26 +5,27 @@ import arc.math.Interp;
 import mindustry.content.Fx;
 import mindustry.content.Items;
 import mindustry.content.Liquids;
-import mindustry.entities.bullet.BasicBulletType;
 import mindustry.entities.bullet.LaserBulletType;
 import mindustry.entities.effect.MultiEffect;
 import mindustry.entities.part.RegionPart;
-import mindustry.entities.pattern.ShootAlternate;
 import mindustry.gen.Sounds;
 import mindustry.graphics.Pal;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
+import mindustry.type.LiquidStack;
 import mindustry.world.Block;
 import mindustry.world.blocks.defense.Wall;
-import mindustry.world.blocks.defense.turrets.ItemTurret;
 import mindustry.world.blocks.defense.turrets.PowerTurret;
 import mindustry.world.blocks.distribution.*;
+import mindustry.world.blocks.environment.Floor;
 import mindustry.world.blocks.environment.OreBlock;
 import mindustry.world.blocks.heat.HeatProducer;
+import mindustry.world.blocks.power.ConsumeGenerator;
 import mindustry.world.blocks.power.PowerNode;
 import mindustry.world.blocks.power.ThermalGenerator;
 import mindustry.world.blocks.production.Drill;
 import mindustry.world.blocks.production.GenericCrafter;
+import mindustry.world.blocks.production.HeatCrafter;
 import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.draw.*;
 import mindustry.world.meta.Env;
@@ -36,15 +37,15 @@ public class KatorBlocks {
             //production
             screwdriver, laserdriver, rocketcher, ventpump, inertturbine, well, deepdrill, vulcaniteextractor,
             //power
-            energychannel, substation, energyflow, vulcanitebattery, ionbattery, toroidalmagneticsupermassiveenergystorage, heatgenerator, ice, turbine, largeturbine, indoorturbine,
+            energychannel, substation, energyflow, ionbattery, toroidalmagneticsupermassiveenergystorage, heatgenerator, ice, turbine, largeturbine, indoorturbine,
             //crafting
-            erelitforge, chemicalheater, cauldron, remover, electroliser, compositepress, passivenuclearheater, nuclearreactor, aciddecomposer, magnetizer, centrifuge,
+            erelitforge, chemicalheater, cauldron, compositepress, passivenuclearheater, nuclearreactor, aciddecomposer, magnetizer, centrifuge, remover,
             //distribution
             heavyconveyor, heavyrouter, overflowredirector, heavyjunction, heavybridge, heavysorter,
             //storage
             corestardust,
             //turret
-            vector, twins, arbitrator, shaft, hammer, heavyrain, volcano, sparky,
+            vector, arbitrator, sparky,
             //wall
             nickelwall, nickellargewall,
             //ore
@@ -93,7 +94,7 @@ public class KatorBlocks {
             squareSprite = false;
         }};
         heatgenerator = new ThermalGenerator("heat-generator"){{
-            requirements(Category.power, with(KatorItems.ferelit, 1, KatorItems.kateos, 1, KatorItems.nickel, 1));
+            requirements(Category.power, with(KatorItems.kateos, 30, KatorItems.nickel, 16));
             powerProduction = 3f;
             generateEffect = Fx.redgeneratespark;
             effectChance = 0.011f;
@@ -110,6 +111,18 @@ public class KatorBlocks {
                         glowScale = 5f;
                     }}
             );
+        }};
+        turbine = new ConsumeGenerator("turbine"){{
+            requirements(Category.power, with(KatorItems.ferelit, 20, KatorItems.kateos, 50, KatorItems.nickel, 30));
+            powerProduction = 12f;
+            /*
+            researchCost = with(Items.graphite, 2000, Items.tungsten, 1000, Items.oxide, 10, Items.silicon, 1500);
+            */
+            consumeLiquids(LiquidStack.with(KatorLiquids.steam, 48f));
+            size = 3;
+            generateEffect = Fx.none;
+            liquidCapacity = 96f;
+            ambientSound = Sounds.smelter;
         }};
 
         //crafting
@@ -134,7 +147,7 @@ public class KatorBlocks {
             );
             craftEffect = Fx.blastsmoke;
             consumeItems(with(KatorItems.ferelit, 1, KatorItems.nickel, 1,  KatorItems.calcite, 2));
-            consumePower(3f);
+            consumePower(6f);
             outputItems = ItemStack.with(KatorItems.erelit, 2);
             squareSprite = false;
         }};
@@ -163,7 +176,18 @@ public class KatorBlocks {
             rotateDraw = false;
             regionRotated1 = 1;
             ambientSound = Sounds.hum;
-            heatOutput = 8f;
+            heatOutput = 3f;
+        }};
+        cauldron = new HeatCrafter("cauldron"){{
+            requirements(Category.crafting, with(KatorItems.composite, 60));
+            size = 3;
+            hasLiquids = true;
+            liquidCapacity = 40f;
+            ambientSound = Sounds.extractLoop;
+            ambientSoundVolume = 0.06f;
+            heatRequirement = 6f;
+            outputLiquid = new LiquidStack(KatorLiquids.steam, 96f);
+
         }};
 
         //distribution
@@ -212,7 +236,7 @@ public class KatorBlocks {
         //storage
 
         corestardust = new CoreBlock("core-star-dust"){{
-            requirements(Category.effect, with( KatorItems.ferelit, 600, KatorItems.kateos, 800,KatorItems.nickel, 400));
+            requirements(Category.effect, with( KatorItems.ferelit, 400, KatorItems.kateos, 800,KatorItems.nickel, 600));
             size = 3;
             alwaysUnlocked = true;
             isFirstTier = true;
@@ -279,7 +303,7 @@ public class KatorBlocks {
             }};
         }};
 
-        twins = new ItemTurret("twins"){{
+        /*twins = new ItemTurret("twins"){{
             requirements(Category.turret, with(KatorItems.composite, 35));
             size = 2;
             ammo(
@@ -334,6 +358,7 @@ public class KatorBlocks {
 
             limitRange();
         }};
+         */
 
         //wall
 
@@ -360,6 +385,10 @@ public class KatorBlocks {
         }};
         orekateos = new OreBlock(KatorItems.kateos) {{
             oreDefault = false;
+        }};
+        calcitedust = new Floor("calcitedust"){{
+            itemDrop = KatorItems.calcite;
+            playerUnmineable = true;
         }};
     }
 }
