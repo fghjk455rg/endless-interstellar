@@ -4,196 +4,46 @@ import arc.graphics.Color;
 import arc.math.Interp;
 import mindustry.content.Fx;
 import mindustry.content.Items;
-import mindustry.content.Liquids;
+import mindustry.content.StatusEffects;
 import mindustry.entities.bullet.LaserBulletType;
 import mindustry.entities.effect.MultiEffect;
 import mindustry.entities.part.RegionPart;
 import mindustry.gen.Sounds;
+import mindustry.graphics.CacheLayer;
 import mindustry.graphics.Pal;
 import mindustry.type.Category;
-import mindustry.type.ItemStack;
-import mindustry.type.LiquidStack;
 import mindustry.world.Block;
-import mindustry.world.blocks.defense.Wall;
 import mindustry.world.blocks.defense.turrets.PowerTurret;
 import mindustry.world.blocks.distribution.*;
 import mindustry.world.blocks.environment.Floor;
 import mindustry.world.blocks.environment.OreBlock;
-import mindustry.world.blocks.heat.HeatProducer;
-import mindustry.world.blocks.power.ConsumeGenerator;
-import mindustry.world.blocks.power.PowerNode;
-import mindustry.world.blocks.power.ThermalGenerator;
-import mindustry.world.blocks.production.Drill;
-import mindustry.world.blocks.production.GenericCrafter;
-import mindustry.world.blocks.production.HeatCrafter;
 import mindustry.world.blocks.storage.CoreBlock;
-import mindustry.world.draw.*;
-import mindustry.world.meta.Env;
+import mindustry.world.draw.DrawTurret;
 
 import static mindustry.type.ItemStack.with;
 
 public class KatorBlocks {
     public static Block
             //production
-            screwdriver, laserdriver, rocketcher, ventpump, inertturbine, well, deepdrill, vulcaniteextractor,
             //power
-            energychannel, substation, energyflow, ionbattery, toroidalmagneticsupermassiveenergystorage, heatgenerator, ice, turbine, largeturbine, indoorturbine,
             //crafting
-            erelitforge, chemicalheater, cauldron, compositepress, passivenuclearheater, nuclearreactor, aciddecomposer, magnetizer, centrifuge, remover,
             //distribution
             heavyconveyor, heavyrouter, overflowredirector, heavyjunction, heavybridge, heavysorter,
             //storage
-            corestardust,
+            corecolony,
             //turret
-            vector, arbitrator, sparky,
+            vector, twins, arbitrator, sparky,
             //wall
-            nickelwall, nickellargewall,
             //ore
-            orenikel, oreferelit, orekateos, calcitedust
+            orealuminum, orequartz, acid
             ;
 
     public static void load() {
 
-        //production
-
-        screwdriver = new Drill("screwdriver"){{
-            requirements(Category.production, with(KatorItems.kateos, 10, KatorItems.nickel, 18));
-            tier = 2;
-            drillTime = 300;
-            size = 2;
-            //mechanical drill doesn't work in space
-            envEnabled ^= Env.space;
-            consumeLiquid(Liquids.water, 0.025f).boost();
-            consumePower(1f);
-        }};
-        laserdriver = new Drill("laserdriver"){{
-            requirements(Category.production, with(KatorItems.kateos, 1, KatorItems.nickel, 1));
-            tier = 3;
-            drillTime = 240;
-            size = 4;
-            drillEffect = Fx.mineBig;
-            //mechanical drill doesn't work in space
-            envEnabled ^= Env.space;
-            consumeLiquid(Liquids.water, 0.025f).boost();
-            consumePower(3f);
-            squareSprite = false;
-        }};
-
-        //power
-
-        energychannel = new PowerNode("energy-channel"){{
-            requirements(Category.power, with(KatorItems.kateos, 2, KatorItems.nickel, 2));
-            maxNodes = 3;
-            laserRange = 30;
-            squareSprite = false;
-        }};
-        substation = new PowerNode("substation"){{
-            requirements(Category.power, with(KatorItems.kateos, 6, KatorItems.nickel, 4));
-            maxNodes = 12;
-            laserRange = 6;
-            squareSprite = false;
-        }};
-        heatgenerator = new ThermalGenerator("heat-generator"){{
-            requirements(Category.power, with(KatorItems.kateos, 30, KatorItems.nickel, 16));
-            powerProduction = 3f;
-            generateEffect = Fx.redgeneratespark;
-            effectChance = 0.011f;
-            size = 2;
-            floating = true;
-            ambientSound = Sounds.hum;
-            ambientSoundVolume = 0.1f;
-            drawer = new DrawMulti(
-                    new DrawRegion(),
-                    new DrawGlowRegion(){{
-                        alpha = 0.5f;
-                        color = Color.valueOf("ffffff");
-                        glowIntensity = 2f;
-                        glowScale = 5f;
-                    }}
-            );
-        }};
-        turbine = new ConsumeGenerator("turbine"){{
-            requirements(Category.power, with(KatorItems.ferelit, 20, KatorItems.kateos, 50, KatorItems.nickel, 30));
-            powerProduction = 12f;
-            /*
-            researchCost = with(Items.graphite, 2000, Items.tungsten, 1000, Items.oxide, 10, Items.silicon, 1500);
-            */
-            consumeLiquids(LiquidStack.with(KatorLiquids.steam, 48f));
-            size = 3;
-            generateEffect = Fx.none;
-            liquidCapacity = 96f;
-            ambientSound = Sounds.smelter;
-        }};
-
-        //crafting
-
-        erelitforge = new GenericCrafter("erelit-forge"){{
-            requirements(Category.crafting, with(KatorItems.ferelit, 60, KatorItems.kateos, 60, KatorItems.nickel, 80));
-            size = 3;
-            craftTime = 240;
-            drawer = new DrawMulti(
-                    new DrawRegion("-bottom"),
-                    new DrawPlasma(){{
-                        plasma1 = Color.valueOf("ffebc6");
-                        plasma2 = Color.valueOf("ffdea0");
-                    }},
-                    new DrawRegion(),
-                    new DrawGlowRegion(){{
-                        alpha = 0.5f;
-                        color = Color.valueOf("ffffff");
-                        glowIntensity = 2f;
-                        glowScale = 5f;
-                    }}
-            );
-            craftEffect = Fx.blastsmoke;
-            consumeItems(with(KatorItems.ferelit, 1, KatorItems.nickel, 1,  KatorItems.calcite, 2));
-            consumePower(6f);
-            outputItems = ItemStack.with(KatorItems.erelit, 2);
-            squareSprite = false;
-        }};
-
-        chemicalheater = new HeatProducer("chemical-heater"){{
-            requirements(Category.crafting, with(KatorItems.ferelit, 60, KatorItems.kateos, 60, KatorItems.nickel, 80));
-            size = 3;
-            craftTime = 240;
-            drawer = new DrawMulti(
-                    new DrawRegion("-bottom"),
-                    new DrawLiquidTile(Liquids.hydrogen),
-                    new DrawRegion(),
-                    new DrawGlowRegion(){{
-                        alpha = 0.1f;
-                        color = Color.valueOf("ffffff");
-                        glowIntensity = 2f;
-                        glowScale = 5f;
-                    }},
-                    new DrawHeatOutput()
-            );
-            consumeLiquid(Liquids.nitrogen, 0.2f);
-            consumeItem(KatorItems.kateos, 2);
-            outputItems = ItemStack.with(KatorItems.calcite, 2);
-            liquidCapacity = 20f;
-            itemCapacity = 20;
-            rotateDraw = false;
-            regionRotated1 = 1;
-            ambientSound = Sounds.hum;
-            heatOutput = 3f;
-        }};
-        cauldron = new HeatCrafter("cauldron"){{
-            requirements(Category.crafting, with(KatorItems.composite, 60));
-            size = 3;
-            hasLiquids = true;
-            liquidCapacity = 40f;
-            ambientSound = Sounds.extractLoop;
-            ambientSoundVolume = 0.06f;
-            heatRequirement = 6f;
-            outputLiquid = new LiquidStack(KatorLiquids.steam, 96f);
-
-        }};
-
         //distribution
 
         heavyconveyor = new Conveyor("heavy-conveyor"){{
-            requirements(Category.distribution, with(KatorItems.kateos, 2, KatorItems.nickel, 1));
+            requirements(Category.distribution, with(Items.copper, 2, KatorItems.aluminum, 1));
             health = 100;
             speed = 0.03f;
             displayedSpeed = 4.2f;
@@ -201,22 +51,22 @@ public class KatorBlocks {
             bridgeReplacement = heavybridge;
         }};
         heavyrouter = new Router("heavy-router"){{
-            requirements(Category.distribution, with(KatorItems.kateos, 5, KatorItems.nickel, 2));
+            requirements(Category.distribution, with(Items.copper, 5, KatorItems.aluminum, 2));
             buildCostMultiplier = 4f;
             health = 120;
         }};
         overflowredirector = new OverflowGate("overflow-redirector"){{
-            requirements(Category.distribution, with(KatorItems.kateos, 6, KatorItems.nickel, 3));
+            requirements(Category.distribution, with(Items.copper, 6, KatorItems.aluminum, 3));
             buildCostMultiplier = 3f;
             health = 140;
         }};
         heavysorter = new Sorter("heavy-sorter"){{
-            requirements(Category.distribution, with(KatorItems.kateos, 8, KatorItems.nickel, 2));
+            requirements(Category.distribution, with(Items.copper, 8, KatorItems.aluminum, 2));
             buildCostMultiplier = 3f;
             health = 140;
         }};
         heavybridge = new BufferedItemBridge("heavy-bridge"){{
-            requirements(Category.distribution, with(KatorItems.kateos, 5, KatorItems.nickel, 5));
+            requirements(Category.distribution, with(Items.copper, 5, KatorItems.aluminum, 5));
             fadeIn = moveArrows = false;
             range = 4;
             speed = 74f;
@@ -225,7 +75,7 @@ public class KatorBlocks {
             health = 120;
         }};
         heavyjunction = new Junction("heavy-junction"){{
-            requirements(Category.distribution, with(KatorItems.kateos, 3, KatorItems.nickel, 2));
+            requirements(Category.distribution, with(Items.copper, 3, KatorItems.aluminum, 2));
             speed = 26;
             capacity = 6;
             health = 30;
@@ -235,8 +85,8 @@ public class KatorBlocks {
 
         //storage
 
-        corestardust = new CoreBlock("core-star-dust"){{
-            requirements(Category.effect, with( KatorItems.ferelit, 400, KatorItems.kateos, 800,KatorItems.nickel, 600));
+        corecolony = new CoreBlock("core-colony"){{
+            requirements(Category.effect, with( Items.copper, 400, KatorItems.aluminum, 800,KatorItems.quartz, 200));
             size = 3;
             alwaysUnlocked = true;
             isFirstTier = true;
@@ -250,7 +100,7 @@ public class KatorBlocks {
         //turret
 
         vector = new PowerTurret("vector"){{
-            requirements(Category.turret, with( KatorItems.kateos, 40,KatorItems.nickel, 40));
+            requirements(Category.turret, with( Items.copper, 40,KatorItems.aluminum, 40,KatorItems.quartz, 20));
             range = 140f;
             shoot.firstShotDelay = 20f;
             recoil = 2f;
@@ -304,7 +154,7 @@ public class KatorBlocks {
         }};
 
         /*twins = new ItemTurret("twins"){{
-            requirements(Category.turret, with(KatorItems.composite, 35));
+            requirements(Category.turret, with(KatorItems.pulsealloy, 35));
             size = 2;
             ammo(
                     KatorItems.nickel,  new BasicBulletType(3f, 58){{
@@ -360,35 +210,24 @@ public class KatorBlocks {
         }};
          */
 
-        //wall
-
-        nickelwall = new Wall("nickel-wall"){{
-            requirements(Category.defense, with(KatorItems.nickel, 6));
-            health = 180 * 4;
-            armor = 2f;
-            buildCostMultiplier = 8f;
-        }};
-        nickellargewall = new Wall("nickel-large-wall"){{
-            requirements(Category.defense, with(KatorItems.nickel, 24));
-            health = 760 * 4;
-            armor = 2f;
-            buildCostMultiplier = 8f;
-        }};
-
         //ore
 
-        orenikel = new OreBlock(KatorItems.nickel) {{
+        orealuminum = new OreBlock(KatorItems.aluminum) {{
             oreDefault = false;
         }};
-        oreferelit = new OreBlock(KatorItems.ferelit) {{
+        orequartz = new OreBlock(KatorItems.quartz) {{
             oreDefault = false;
         }};
-        orekateos = new OreBlock(KatorItems.kateos) {{
-            oreDefault = false;
-        }};
-        calcitedust = new Floor("calcitedust"){{
-            itemDrop = KatorItems.calcite;
-            playerUnmineable = true;
+        acid = new Floor("acidfloor"){{
+            drownTime = 150f;
+            status = StatusEffects.corroded;
+            statusDuration = 240f;
+            speedMultiplier = 0.5f;
+            variants = 0;
+            liquidDrop = KatorLiquids.acid;
+            liquidMultiplier = 0.5f;
+            isLiquid = true;
+            cacheLayer = CacheLayer.cryofluid;
         }};
     }
 }

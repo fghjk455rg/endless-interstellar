@@ -30,11 +30,13 @@ public class KatorUnitTypes {
             constructor = MechUnit::create;
             canBoost = true;
             boostMultiplier = 1.5f;
-            speed = 0.5f;
+            speed = 1f;
             hitSize = 7f;
             health = 120f;
             buildSpeed = 0.8f;
             alwaysUnlocked = true;
+            mineTier = 2;
+            mineSpeed = 2f;
 
             ammoType = new PowerAmmoType(1000);
 

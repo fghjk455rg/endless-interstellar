@@ -19,7 +19,7 @@ public class KatorPlanets{
                 snewerus;
 
         public static void load(){
-        caereleum = new Planet("caereleum", Planets.sun, 10f) {{
+        caereleum = new Planet("caereleum", Planets.sun, 12f) {{
             bloom = true;
             accessible = false;
 
@@ -67,7 +67,7 @@ public class KatorPlanets{
             alwaysUnlocked = true;
             landCloudColor = Pal.spore.cpy().a(0.5f);
             hiddenItems.addAll(Items.erekirItems).addAll(Items.serpuloItems).removeAll(KatorItems.snewerusItems);
-            unlockedOnLand.add(KatorBlocks.corestardust);
+            unlockedOnLand.add(KatorBlocks.corecolony);
         }};
 
             //i dont fucking know (thx dusted land source code)
