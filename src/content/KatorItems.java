@@ -36,7 +36,7 @@ public class KatorItems {
         }};
 
         snewerusItems.addAll (
-                copper,aluminum,quartz,silicon,graphite,thorium,sulfur,plastanium,fissileMatter,pulsealloy,
+                copper,aluminum,quartz,silicon,graphite,thorium,sulfur,plastanium,fissileMatter,pulsealloy
         );
     }
 }
